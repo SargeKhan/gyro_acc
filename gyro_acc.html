@@ -1,0 +1,26 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+	<meta charset="utf-8" /> 
+	<title>gyro.js - easy access to your web browsers built in accelerometer's and gyroscope's</title>
+</head>
+<body>
+	<p>This Example just print's the raw accelerometer and gyro data. Will return null if no device information is found.</p>
+	<p>gyro.getFeatures: <span id="features"></span></p>
+	<span id="example"></span>
+	<script src="./gyrojs.js"></script>
+	<script>
+		gyro.startTracking(function(o) {
+			var b = document.getElementById('example'),
+					f = document.getElementById('features');
+			f.innerHTML = gyro.getFeatures();
+			b.innerHTML = "<p> <b>Acccelerometer</b></br> x = " + (String(o.x)).substring(0,6) + "</p>" +
+										"<p> y = " + (String(o.y)).substring(0,6) + "</p>" +
+										"<p> z = " + (String(o.z)).substring(0,6) + "</p>" +
+										"<p> </br>  <b>Gyro</b></br> alpha = " + o.alpha + "</p>" +
+										"<p> beta = " + o.beta + "</p>" +
+										"<p> gamma = " + o.gamma + "</p>";
+		});
+	</script>
+</body>
+</html>
